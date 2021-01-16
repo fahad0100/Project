@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:custom_fade_animation/custom_fade_animation.dart';
 
 class FirstPageAuth extends StatefulWidget {
   @override
@@ -12,7 +13,7 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
     var test = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: FadeAnimation(1,Container(
           width: MediaQuery.of(context).size.width,
           height: (test < MediaQuery.of(context).size.width
               ? MediaQuery.of(context).size.width
@@ -24,7 +25,7 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
           ),
           child: ListView(
             children: [
-              Container(
+            FadeAnimation(2,Container(
                   height: MediaQuery.of(context).size.height / 2 + 120,
                   child: Column(
                     children: [
@@ -46,8 +47,8 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
                             color: Colors.black),
                       ),
                     ],
-                  )),
-              Container(
+                  ))),
+            FadeAnimation(2,Container(
                 child: Column(
                   children: [
                     FlatButton(
@@ -91,11 +92,11 @@ class _FirstPageAuthState extends State<FirstPageAuth> {
                                 color: Colors.deepPurple, fontSize: 20)))
                   ],
                 ),
-              )
+              ))
             ],
           ),
         ),
-      ),
+        )),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flat_segmented_control/flat_segmented_control.dart';
 import 'package:provider/provider.dart';
 import '../auth.dart';
+import 'dart:async';
 
 class HomePage extends StatefulWidget {
   @override
@@ -11,6 +12,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var _start = "10";
+  Timer _timer;
+
+  void startTimer() {
+
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,6 +48,7 @@ class _HomePageState extends State<HomePage> {
                       color: Colors.red),
                 ),
               ),
+
               Container(
                 padding: EdgeInsets.only(right: 25),
                 width: MediaQuery.of(context).size.width / 2,
@@ -117,12 +128,14 @@ class _HomePageState extends State<HomePage> {
                     // // _incrementCounter();
                     // final sign = context.read<AuthService>().UserIdAuth();
                     // print(sign.toString());
+
                     final sign = context.read<AuthService>().SignOut();
                     print(sign);
                     Navigator.pushNamed(context, "/CheckPage");
+                    startTimer();
                   },
                   child: Text("Subment")),
-              Center(child: Text("test1")),
+              Center(child: Text("$_start")),
               Center(child: Text("View 3")),
               Center(child: Text("View 4")),
               Center(child: Text("View 5")),

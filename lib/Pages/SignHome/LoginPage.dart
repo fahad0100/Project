@@ -1,8 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:store_app/Pages/auth.dart';
 import 'package:provider/provider.dart';
+import 'package:custom_fade_animation/custom_fade_animation.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,14 +20,14 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: ListView(
+      body: FadeAnimation(0.7,Container(
+        child: FadeAnimation(0.7,ListView(
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
-                  Container(
+                FadeAnimation(0.7,Container(
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(left: 25),
                     child: IconButton(
@@ -37,13 +38,13 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.black,
                         ),
                         onPressed: () {
-                          Navigator.pushNamed(context, "/LoginPage");
+                          Navigator.pushNamed(context, "/FirstPageAuth");
                         }),
-                  ),
-                  Container(
+                  )),
+                   Container(
                     padding: EdgeInsets.only(right: 25),
                     alignment: Alignment.centerRight,
-                    child: FlatButton(
+                    child: Container(
                       child: Text(
                         "تسجيل الدخول",
                         style: TextStyle(
@@ -51,7 +52,6 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.black,
                             fontWeight: FontWeight.bold),
                       ),
-                      onPressed: () {},
                     ),
                   ),
                 ],
@@ -131,6 +131,9 @@ class _LoginPageState extends State<LoginPage> {
                             style: TextStyle(color: Colors.black),
                           )),
                     ),
+
+
+
                     Container(
                       alignment: Alignment.center,
                       width: 200,
@@ -149,26 +152,53 @@ class _LoginPageState extends State<LoginPage> {
                           height: 50,
                           minWidth: 200,
                           onPressed: () async {
+
+
+
+
                             var test = await context.read<AuthService>().SignIn(
                                   email: email.text.trim(),
                                   password: pass.text.trim(),
                                 );
-                            print(test);
-                            print(await context.read<AuthService>().ID());
                             if (test == "true") {
-                              print("hi fajad");
                               var use =
                                   await context.read<AuthService>().getUserID();
 
                               if (use != null) {
-                                print("------");
-                                print(use);
-                                Navigator.pushNamed(context, "/CheckPage");
+                                Fluttertoast.showToast(
+                                    msg: "تم تسجيل الدخول",
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 3,
+                                    backgroundColor: Colors.green,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
+                                Future.delayed(Duration(seconds: 1), () {
+                                  print("------");
+                                  print(use);
+                                  Navigator.pushNamed(context, "/CheckPage");
+                                });
+
                               }
                             } else {
-                              print("how are you ?");
+                              Fluttertoast.showToast(
+                                  msg: "فشلة عملية تسجيل الدخول",
+                                  toastLength: Toast.LENGTH_SHORT,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 3,
+                                  backgroundColor: Colors.red,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
+
                             }
-                            //
+
+
+
+
+
+
                           },
                           child: Text(
                             "تسجيل دخول",
@@ -183,8 +213,10 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ],
-        ),
-      ),
+        ),)
+      ),),
     );
   }
 }
+
+

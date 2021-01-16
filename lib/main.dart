@@ -42,10 +42,10 @@ class CheckPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final firebaseUser = context.watch<User>();
     if (firebaseUser != null) {
-      print("0000000000000000");
+      print("Home Page");
       return HomePage();
     } else {
-      print("111111111111111111");
+      print("First Page");
       return FirstPageAuth();
     }
   }
