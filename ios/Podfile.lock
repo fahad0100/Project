@@ -66,6 +66,8 @@ PODS:
   - nanopb/decode (2.30907.0)
   - nanopb/encode (2.30907.0)
   - PromisesObjC (1.2.12)
+  - shared_preferences (0.0.1):
+    - Flutter
   - Toast (4.0.0)
 
 DEPENDENCIES:
@@ -75,6 +77,7 @@ DEPENDENCIES:
   - Flutter (from `Flutter`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - integration_test (from `.symlinks/plugins/integration_test/ios`)
+  - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
 
 SPEC REPOS:
   trunk:
@@ -104,6 +107,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/fluttertoast/ios"
   integration_test:
     :path: ".symlinks/plugins/integration_test/ios"
+  shared_preferences:
+    :path: ".symlinks/plugins/shared_preferences/ios"
 
 SPEC CHECKSUMS:
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
@@ -119,10 +124,11 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 1024b1a4dfbd7a0e92cb20d7e0a6f1fb66b449a4
   GoogleUtilities: d866834472f1324d080496bc67ab3ce5d0d46027
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
-  integration_test: 5ed24a436eb7ec17b6a13046e9bf7ca4a404e59e
+  integration_test: 6eb66a19f7104200dcfdd62bc0077e1b09686e4f
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
 PODFILE CHECKSUM: af6b891fb448119e2e3d0a226fcad7567aa13204

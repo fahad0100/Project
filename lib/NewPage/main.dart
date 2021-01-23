@@ -1,18 +1,28 @@
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:store_app/Pages/auth.dart';
-import 'Pages/Component.dart';
-import 'Pages/Home/HomePage.dart';
-import 'Pages/SignHome/first_Page_Auth.dart';
+import 'package:store_app/NewPage/Home/HomePage.dart';
+import 'First_Page.dart';
 import 'package:provider/provider.dart';
+import '../Component.dart';
+import '../Component/auth.dart';
 
 void main() async {
   //١ و ٢ للفاير بيس علشان يكون فيه اتصال اول مايشتغل البرنامج
   WidgetsFlutterBinding.ensureInitialized(); //١
-  await Firebase.initializeApp();//٢
-  runApp(MainPage());
+  await Firebase.initializeApp(); //٢
+  runApp(EasyLocalization(
+      child: MainPage(),
+      startLocale: Locale('en', 'EN'),
+      saveLocale: true,
+      supportedLocales: [Locale('en', 'EN'),Locale('ar', 'AR')],
+      path: "lang"),);
 }
+
+
+
 
 class MainPage extends StatelessWidget {
   @override
@@ -31,6 +41,9 @@ class MainPage extends StatelessWidget {
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
           home: CheckPage(),
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
           title: "home",
           routes: RoutFunc()),
     );
@@ -43,10 +56,10 @@ class CheckPage extends StatelessWidget {
     final firebaseUser = context.watch<User>();
     if (firebaseUser != null) {
       print("Home Page");
-      return HomePage();
+      return Home_Page();
     } else {
       print("First Page");
-      return FirstPageAuth();
+      return First_Page();
     }
   }
 }
